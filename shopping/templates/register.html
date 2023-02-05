@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Home
+{% endblock %}
+{% block content %}
+<div class="flex min-h-screen ">
+    <div class="basis-1/2 p-20 text-center">
+        <div>
+            <h1 class="text-5xl mb-2 font-bold">WOO!</h1>
+            <span class="before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-blue-500 relative inline-block">
+              <span class="relative text-white font-semibold text-5xl text-stone-800 ">List Shopping App</span>
+            </span>
+        </div>
+        <img src="{% static 'img1.svg' %}" alt="Logo" class="p-19 mt-8">
+    </div>
+    <div class="bg-blue-500 basis-1/2 flex justify-center items-center">
+        <form action="" method="POST" class="shadow-2xl w-2/4">
+            {% csrf_token  %}
+            <div class="flex flex-col bg-white items-center px-20 py-16 min-w-full rounded-lg">
+                <p class="text-3xl mt-4 mb-2 font-sans">Sign up</p>
+                <label for="" class="px-8 text-lg  mt-2 block font-sans font-medium">{{ form_register.user_name.label  }}</label>
+                {{ form_register.user_name }}
+                <label for="" class="px-8 text-lg  block font-sans font-medium">{{ form_register.user_email.label  }}</label>
+                {{ form_register.user_email }}
+                <label for="" class="px-8 text-lg block font-sans font-medium">{{ form_register.user_password.label  }}</label>
+                {{ form_register.user_password }}
+                <label for="" class="px-8 text-lg block font-sans font-medium">{{ form_register.user_password2.label  }}</label>
+                {{ form_register.user_password2 }}
+                <button type="submit" class="bg-blue-500 text-white rounded px-10 py-2 my-3  hover:bg-blue-400">Sing in</button>
+                <a href="{% url 'login' %}" class="hover:text-blue-500">Login </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
